@@ -9,41 +9,182 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+				font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			}
+			.hero {
+				text-align: center;
+				padding: 6rem 1rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.hero h1 {
+				font-size: 3.5rem;
+				line-height: 1.1;
+				font-weight: 800;
+				margin-bottom: 1.5rem;
+				background: linear-gradient(135deg, #000 0%, #444 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.hero p {
+				font-size: 1.25rem;
+				color: #555;
+				line-height: 1.6;
+				margin-bottom: 2.5rem;
+			}
+			.cta-group {
+				display: flex;
+				justify-content: center;
+				gap: 1rem;
+			}
+			.btn {
+				padding: 0.8rem 1.75rem;
+				font-size: 1.1rem;
+				border-radius: 8px;
+				font-weight: 600;
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+			.btn-primary {
+				background: #000;
+				color: #fff;
+			}
+			.btn-primary:hover {
+				background: #222;
+				transform: translateY(-2px);
+			}
+			.btn-secondary {
+				background: #f1f1f1;
+				color: #000;
+			}
+			.btn-secondary:hover {
+				background: #e1e1e1;
+				transform: translateY(-2px);
+			}
+			.features {
+				padding: 4rem 0;
+			}
+			.features h2 {
+				text-align: center;
+				font-size: 2.25rem;
+				font-weight: 700;
+				margin-bottom: 3rem;
+			}
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+			}
+			.feature-card {
+				background: #fafafa;
+				padding: 2rem;
+				border-radius: 12px;
+				border: 1px solid #eaeaea;
+				transition: transform 0.2s;
+			}
+			.feature-card:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+			}
+			.feature-card h3 {
+				font-size: 1.25rem;
+				margin-bottom: 1rem;
+				font-weight: 600;
+				color: #111;
+			}
+			.feature-card p {
+				color: #666;
+				line-height: 1.5;
+				margin: 0;
+			}
+			.code-block {
+				background: #111;
+				color: #fff;
+				padding: 2rem;
+				border-radius: 12px;
+				font-family: monospace;
+				margin: 4rem auto;
+				max-width: 800px;
+				overflow-x: auto;
+				text-align: left;
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<h1>OpenVoice platform for AI Voice Agents</h1>
+				<p>
+					Power thousands of inbound and outbound calls every minute with human-like, multilingual intelligence. 100% open-source and ready to deploy on your own infrastructure.
+				</p>
+				<div class="cta-group">
+					<a href="https://github.com/your-org/open-bolna" class="btn btn-primary">Get Started on GitHub</a>
+					<a href="/docs" class="btn btn-secondary">Read Docs</a>
+				</div>
+			</section>
+
+			<section class="features">
+				<h2>Features That Power Real Voice Agents</h2>
+				<div class="grid">
+					<div class="feature-card">
+						<h3>Bulk Calling at Scale</h3>
+						<p>Run campaigns with thousands of AI calls simultaneously, optimized for your cloud.</p>
+					</div>
+					<div class="feature-card">
+						<h3>Custom API Triggers</h3>
+						<p>Call external APIs in real-time during a live conversation to fetch user data or book meetings.</p>
+					</div>
+					<div class="feature-card">
+						<h3>Human-in-the-Loop</h3>
+						<p>Transfer calls to a human agent instantly when needed or upon user request.</p>
+					</div>
+					<div class="feature-card">
+						<h3>Workflow Integration</h3>
+						<p>Easy to integrate with n8n, Make.com, Zapier, Twilio, and other leading tools.</p>
+					</div>
+					<div class="feature-card">
+						<h3>Natural Conversations</h3>
+						<p>Agents understand interruptions, wait for complete thoughts, and reply with sub-300ms latency.</p>
+					</div>
+					<div class="feature-card">
+						<h3>Connect Any Model</h3>
+						<p>Integrated with 20+ ASR, LLM, and TTS models including localized opensource models.</p>
+					</div>
+				</div>
+			</section>
+
+			<section style="text-align: center; margin: 4rem 0;">
+				<h2>Developer APIs</h2>
+				<p>Trigger logic directly using our API.</p>
+				<div class="code-block">
+<pre><code>import requests
+
+url = "https://api.yourdomain.com/call"
+
+payload = &#123;
+    "agent_id": "123e4567-e89b-12d3...",
+    "recipient_phone_number": "+10123456789",
+    "from_phone_number": "+19876543007",
+    "user_data": &#123;
+        "variable1": "value1"
+    &#125;
+&#125;
+
+headers = &#123;
+    "Authorization": "Bearer &lt;token&gt;"
+&#125;
+
+response = requests.post(url, json=payload, headers=headers)
+print(response.text)</code></pre>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>

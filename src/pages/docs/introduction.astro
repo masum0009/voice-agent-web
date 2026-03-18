@@ -1,0 +1,197 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Documentation - ${SITE_TITLE}`} description="Documentation for OpenVoice AI agents." />
+		<style>
+			main {
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem;
+				font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				display: flex;
+				gap: 3rem;
+				text-align: left;
+			}
+			.sidebar {
+				width: 250px;
+				flex-shrink: 0;
+				border-right: 1px solid #eaeaea;
+				padding-right: 2rem;
+				display: none;
+				text-align: left;
+			}
+			@media (min-width: 768px) {
+				.sidebar {
+					display: block;
+				}
+			}
+			.sidebar h3 {
+				font-size: 0.85rem;
+				text-transform: uppercase;
+				color: #888;
+				letter-spacing: 1px;
+				margin-bottom: 1rem;
+				margin-top: 2rem;
+			}
+			.sidebar h3:first-child {
+				margin-top: 0;
+			}
+			.sidebar ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.sidebar li {
+				margin-bottom: 0.5rem;
+			}
+			.sidebar a {
+				color: #444;
+				text-decoration: none;
+				font-size: 0.95rem;
+				transition: color 0.2s;
+			}
+			.sidebar a:hover, .sidebar a.active {
+				color: #000;
+				font-weight: 600;
+			}
+			.content {
+				flex-grow: 1;
+				max-width: 800px;
+			}
+			.content h1 {
+				font-size: 2.5rem;
+				font-weight: 800;
+				margin-bottom: 1rem;
+				color: #111;
+			}
+			.content h2 {
+				font-size: 1.75rem;
+				font-weight: 700;
+				margin-top: 3rem;
+				margin-bottom: 1rem;
+				color: #111;
+			}
+			.content h3 {
+				font-size: 1.25rem;
+				font-weight: 600;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				color: #222;
+			}
+			.content p {
+				font-size: 1.1rem;
+				line-height: 1.7;
+				color: #444;
+				margin-bottom: 1.5rem;
+			}
+			.content ul {
+				margin-bottom: 1.5rem;
+				padding-left: 1.5rem;
+			}
+			.content li {
+				font-size: 1.1rem;
+				line-height: 1.6;
+				color: #444;
+				margin-bottom: 0.5rem;
+			}
+			.code-block {
+				background: #111;
+				color: #fff;
+				padding: 1.5rem;
+				border-radius: 8px;
+				font-family: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+				font-size: 0.95rem;
+				overflow-x: auto;
+				margin-bottom: 2rem;
+			}
+			.callout {
+				background: #f8f9fa;
+				border-left: 4px solid #000;
+				padding: 1.5rem;
+				border-radius: 0 8px 8px 0;
+				margin-bottom: 2rem;
+			}
+			.callout p:last-child {
+				margin-bottom: 0;
+			}
+			.callout strong {
+				display: block;
+				margin-bottom: 0.5rem;
+				color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<aside class="sidebar">
+				<h3>Getting Started</h3>
+				<ul>
+					<li><a href="/docs/introduction" class="active">Introduction</a></li>
+					<li><a href="#">Quickstart</a></li>
+					<li><a href="#">Self-Hosting</a></li>
+					<li><a href="#">Authentication</a></li>
+				</ul>
+
+				<h3>Core Concepts</h3>
+				<ul>
+					<li><a href="#">Agents</a></li>
+					<li><a href="#">Models & Integrations</a></li>
+					<li><a href="#">Tools & Webhooks</a></li>
+					<li><a href="#">Prompts</a></li>
+				</ul>
+
+				<h3>API Reference</h3>
+				<ul>
+					<li><a href="#">Initiate Call</a></li>
+					<li><a href="#">Get Call Logs</a></li>
+					<li><a href="#">Manage Agents</a></li>
+				</ul>
+			</aside>
+
+			<section class="content">
+				<h1>Introduction</h1>
+				<p>Welcome to the official documentation for OpenVoice AI. OpenVoice is a comprehensive, open-source platform for building, simulating, and deploying conversational AI voice agents directly into your existing infrastructure.</p>
+
+				<div class="callout">
+					<strong>Open Source First</strong>
+					<p>OpenVoice is completely open-source and built for developers. You can run the entire stack on your own AWS, GCP, or local bare-metal hardware without vendor lock-in.</p>
+				</div>
+
+				<h2>What can you build?</h2>
+				<p>OpenVoice provides the core telephony, real-time streaming, and LLM orchestration required to create interactive, human-like voice agents. Our users typically build:</p>
+				<ul>
+					<li><strong>Inbound Customer Support:</strong> AI agents that replace traditional IVR menus and answer complex queries via RAG (Retrieval-Augmented Generation).</li>
+					<li><strong>Outbound Campaigns:</strong> Automated cart-recovery or feedback survey bots that can be orchestrated at scale.</li>
+					<li><strong>Internal tooling:</strong> Voice interfaces to query your internal databases or trigger workflows via integrations like n8n or Zapier.</li>
+				</ul>
+
+				<h2>Architecture Overview</h2>
+				<p>Under the hood, OpenVoice is composed of three massive components working synchronously with ultra-low latency:</p>
+				<ol>
+					<li><strong>Telephony Gateway:</strong> Manages SIP/WebRTC connections (easily attach Twilio, Plivo, or your SIP trunks).</li>
+					<li><strong>Speech Engine (ASR & TTS):</strong> Converts user audio to text and synthesizes LLM text back into human-like audio using models of your choice (Deepgram, Cartesia, ElevenLabs, OpenAI).</li>
+					<li><strong>Orchestrator:</strong> Manages conversational context, interruption handling, tool-calling (APIs), and latency mitigation.</li>
+				</ol>
+
+				<h2>Next Steps</h2>
+				<p>Ready to get your first voice agent running? Head over to the quickstart guide to clone the repository and initialize the docker containers.</p>
+				
+				<div class="code-block">
+<pre><code>git clone https://github.com/your-org/open-bolna.git
+cd open-bolna
+docker-compose up -d</code></pre>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
